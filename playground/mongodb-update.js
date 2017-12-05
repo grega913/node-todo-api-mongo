@@ -40,7 +40,7 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp',(err, db) => {
             completed: true
         }
     },{
-        returnOriginal:false
+        returnOriginal: false
     })
         .then((result) => {
         console.log(result)
