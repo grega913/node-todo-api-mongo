@@ -103,8 +103,6 @@ describe('GET /todos/:id', () => {
         .end(done)
     })
 
-
-
     it('should return 404 for nob-object ids', (done)=> {
         request(app)
         .get('/todos/123abc')
@@ -113,3 +111,43 @@ describe('GET /todos/:id', () => {
     })
 })
 
+describe('DELETE /todos/:id', () => {
+    it('should remove a todo', (done) => {
+        var hexId = todos[1]._id.toHexString()
+
+        request(app)
+        .delete(`/todos/${hexId}`)
+        .expect(200)
+        .expect((res)=> {
+            expect(res.body.todo._id).toBe(hexId)
+        })
+        .end((err, res)=> {
+            if(err) {
+                return done (err)
+            }
+                //query db using finBYId
+                //expect (null) to not exist()
+            Todo.findById(hexId).then ((todo) => {
+                expect(todo).toNotExist()
+                done()
+            }).catch((e)=> done(e))
+        })
+    })
+
+    it('should return 404 if todo not found', (done)=> {
+      var hexId= new ObjectID().toHexString()
+
+        request(app)
+        .delete(`/todos/${hexId}`)
+        .expect(404)
+        .end(done)
+    })
+    
+    it('should return 404 if obkectID is invalid', (done)=> {
+        request(app)
+        .delete('/todos/123abc')
+        .expect(404)
+        .end(done)
+    })
+    
+})
