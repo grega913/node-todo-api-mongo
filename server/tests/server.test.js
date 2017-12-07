@@ -70,7 +70,6 @@ describe('POST /todos',()=>{
     })
 })
 
-
 describe('GET /todos',() => {
     it('should get all todos',(done) => {
         request(app)
@@ -149,5 +148,5 @@ describe('DELETE /todos/:id', () => {
         .expect(404)
         .end(done)
     })
-    
+
 })
