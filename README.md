@@ -1,6 +1,7 @@
 # ToDo-API-Mongo
 
-first lessons of mongo in udemy course
+section 7 of course:
+https://www.udemy.com/the-complete-nodejs-developer-course-2/learn/v4/t/lecture/5795054?start=0
 
 
 how to start mongodb server
