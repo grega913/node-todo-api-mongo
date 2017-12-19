@@ -1,4 +1,4 @@
-# ToDoApp-Mongo
+# ToDo-API-Mongo
 
 first lessons of mongo in udemy course
 
